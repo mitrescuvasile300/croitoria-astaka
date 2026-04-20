@@ -15,59 +15,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     "colors": {
-                        "on-primary-fixed-variant": "#cccccc",
-                        "surface-bright": "#1a1a1a",
-                        "error": "#ffb4ab",
-                        "on-background": "#ffffff",
-                        "on-primary-container": "#e4e4e4",
-                        "inverse-surface": "#eeeeee",
-                        "on-secondary-container": "#d3d3d3",
-                        "surface-dim": "#050505",
-                        "inverse-primary": "#555555",
-                        "on-error": "#690005",
-                        "error-container": "#93000a",
-                        "on-primary-fixed": "#000000",
-                        "on-tertiary-fixed-variant": "#cccccc",
-                        "tertiary-fixed": "#333333",
-                        "on-tertiary": "#000000",
-                        "surface-tint": "#ffffff",
-                        "primary-fixed": "#333333",
-                        "tertiary-fixed-dim": "#222222",
-                        "primary-fixed-dim": "#222222",
-                        "surface-container-high": "#2b2b2b",
-                        "outline": "#888888",
-                        "surface-container-lowest": "#000000",
-                        "surface-variant": "#222222",
-                        "primary-container": "#ffffff",
-                        "on-tertiary-fixed": "#ffffff",
-                        "background": "#000000",
-                        "secondary-fixed-dim": "#222222",
-                        "inverse-on-surface": "#111111",
-                        "surface-container-low": "#111111",
-                        "on-primary": "#000000",
-                        "surface": "#050505",
-                        "on-surface": "#ffffff",
-                        "secondary-fixed": "#bbbbbb",
-                        "surface-container": "#1a1a1a",
-                        "outline-variant": "#444444",
-                        "primary": "#ffffff",
-                        "on-secondary-fixed-variant": "#dddddd",
-                        "on-tertiary-container": "#ffffff",
-                        "surface-container-highest": "#333333",
-                        "tertiary-container": "#dddddd",
-                        "on-secondary": "#000000",
-                        "secondary": "#cccccc",
-                        "on-secondary-fixed": "#000000",
-                        "on-surface-variant": "#cccccc",
-                        "secondary-container": "#333333",
-                        "tertiary": "#ffffff",
-                        "on-error-container": "#ffdad6"
+                        "on-primary-fixed-variant": "#474747",
+                        "surface-bright": "#fbf9f4",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1c19",
+                        "on-primary-container": "#949393",
+                        "inverse-surface": "#30312e",
+                        "on-secondary-container": "#785a1a",
+                        "surface-dim": "#dbdad5",
+                        "inverse-primary": "#c8c6c5",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#5c3f3f",
+                        "tertiary-fixed": "#ffdad9",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#5f5e5e",
+                        "primary-fixed": "#e4e2e1",
+                        "tertiary-fixed-dim": "#e6bdbd",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container-high": "#eae8e3",
+                        "outline": "#747878",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e4e2dd",
+                        "primary-container": "#2c2c2c",
+                        "on-tertiary-fixed": "#2c1516",
+                        "background": "#fbf9f4",
+                        "secondary-fixed-dim": "#e9c176",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container-low": "#f5f3ee",
+                        "on-primary": "#ffffff",
+                        "surface": "#fbf9f4",
+                        "on-surface": "#1b1c19",
+                        "secondary-fixed": "#ffdea5",
+                        "surface-container": "#f0eee9",
+                        "outline-variant": "#c4c7c7",
+                        "primary": "#171818",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-tertiary-container": "#af8a8a",
+                        "surface-container-highest": "#e4e2dd",
+                        "tertiary-container": "#3f2526",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#775a19",
+                        "on-secondary-fixed": "#261900",
+                        "on-surface-variant": "#444748",
+                        "secondary-container": "#fed488",
+                        "tertiary": "#271112",
+                        "on-error-container": "#93000a"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
@@ -210,40 +214,39 @@
         </div>
     </nav>
 
-    <main class="min-h-screen flex flex-col">
-        <!-- Hero Section -->
-        <header class="relative min-h-screen flex items-center pt-24 bg-surface" id="hero">
-            <div class="absolute inset-0 z-0">
-                <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                    <!-- The user's hero1.mp4 -->
+    <main class="min-h-screen">
+        <header class="relative min-h-screen flex items-center pt-24 bg-surface perspective-1000 overflow-hidden" id="hero">
+            <div class="absolute inset-0 z-0 origin-center">
+                <!-- Fallback poster set to one of the gallery images for fast loading -->
+                <video id="hero-video" autoplay loop muted playsinline poster="assets/poza1.jpg" class="w-full h-full object-cover">
                     <source src="hero1.mp4" type="video/mp4">
                 </video>
                 <!-- Semi-transparent overlay to ensure text visibility -->
-                <div class="absolute inset-0 bg-stone-900/60 mix-blend-multiply"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+                <div class="absolute inset-0 bg-stone-900/50"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent"></div>
             </div>
 
             <div
                 class="relative z-10 w-full max-w-screen-2xl mx-auto px-6 lg:px-12 pt-32 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 text-surface-bright">
-                <div class="lg:col-span-8 flex flex-col justify-end lg:justify-center mt-32 lg:mt-0">
+                <div class="lg:col-span-8 flex flex-col justify-end lg:justify-center mt-32 lg:mt-0 relative z-10">
                     <span
-                        class="font-label text-xs lg:text-sm uppercase tracking-[0.2em] text-secondary-container mb-4 lg:mb-6 reveal">Croitorie
+                        class="hero-text-elem font-label text-xs lg:text-sm uppercase tracking-[0.2em] text-secondary-container mb-4 lg:mb-6 inline-block drop-shadow-md">Croitorie
                         pentru Femei</span>
                     <h1
-                        class="font-headline text-4xl lg:text-7xl leading-[1.1] tracking-tight mb-6 lg:mb-8 reveal delay-100">
+                        class="hero-text-elem font-headline text-4xl lg:text-7xl leading-[1.1] tracking-tight mb-6 lg:mb-8 inline-block drop-shadow-lg">
                         Pasiune &amp; <span class="italic text-secondary-fixed">Eleganță</span> în Detalii
                     </h1>
                     <p
-                        class="font-body text-base lg:text-xl text-surface-variant max-w-2xl leading-relaxed mb-8 lg:mb-12 reveal delay-200">
+                        class="hero-text-elem font-body text-base lg:text-xl text-surface-variant max-w-2xl leading-relaxed mb-8 lg:mb-12 drop-shadow-md">
                         Creația unei piese unice este un dialog între formă și material. La Atelier Astaka,
                         transformăm visul tău într-o rochie impecabilă ce îți celebrează silueta.
                     </p>
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 reveal delay-300">
-                        <a href="tel:0740913537"
-                            class="bg-surface-bright text-primary px-8 py-4 rounded-sm hover:bg-stone-200 transition-colors tracking-wide text-sm font-medium uppercase min-w-[200px] text-center">Programează
+                    <div class="hero-text-elem flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                        <a href="tel:0757171604"
+                            class="magnetic-btn bg-white/10 backdrop-blur-md border border-white/20 text-surface-bright px-8 py-4 rounded-sm hover:bg-white/20 hover:border-white/40 shadow-xl transition-colors tracking-wide text-sm font-medium uppercase min-w-[200px] text-center will-change-transform">Programează
                             o Probă</a>
                         <a href="https://www.facebook.com/ncateliercreatievestimentara" target="_blank"
-                            class="text-surface-bright hover:text-secondary-container transition-colors text-sm font-medium tracking-wide flex items-center gap-2">
+                            class="magnetic-btn text-surface-bright hover:text-secondary-fixed transition-colors text-sm font-medium tracking-wide flex items-center gap-2 will-change-transform p-2">
                             <span>Descoperă Galeria pe Facebook</span>
                             <span class="material-symbols-outlined text-[1.2em]">arrow_forward</span>
                         </a>
@@ -442,8 +445,8 @@
                             <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
                             <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
                         </div>
-                        <p class="font-body text-on-surface-variant italic mb-6">"Rochia mea de vis a devenit realitate la Atelier Astaka. Materialele sunt de o calitate excepțională, iar atenția la detalii este pur și simplu desăvârșită."</p>
-                        <p class="font-headline text-on-surface font-semibold uppercase tracking-wider text-sm">- Ioana M.</p>
+                        <p class="font-body text-on-surface-variant italic mb-6">"Deosebită comunicare, foarte mult profesionalism ! Atenție la detalii, deschidere și adaptare cu ușurință la orice fel de situație. Rochie de ocazie modificată perfect, cu sincronizare la model, respect pentru calitate și cerințe..."</p>
+                        <p class="font-headline text-on-surface font-semibold uppercase tracking-wider text-sm">- Alina Maria TIUSAN</p>
                     </div>
                     <!-- Review 2 -->
                     <div class="bg-surface-container-low p-8 rounded-sm shadow-sm border border-stone-200/20 reveal delay-100">
@@ -454,8 +457,8 @@
                             <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
                             <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
                         </div>
-                        <p class="font-body text-on-surface-variant italic mb-6">"O experiență cu adevărat personalizată. S-au pliat perfect pe ideile mele și au creat o ținută care mi-a pus în valoare exact ce trebuia. Recomand cu mare drag!"</p>
-                        <p class="font-headline text-on-surface font-semibold uppercase tracking-wider text-sm">- Elena D.</p>
+                        <p class="font-body text-on-surface-variant italic mb-6">"Am avut nevoie de scurtarea și strâmtarea pantalonilor de costum [...] lucrarea a fost realizată cu multă grijă și atenție la detalii, iar pantalonii arată acum impecabil. Am apreciat seriozitatea, rapiditatea..."</p>
+                        <p class="font-headline text-on-surface font-semibold uppercase tracking-wider text-sm">- Catalin Gadalean</p>
                     </div>
                     <!-- Review 3 -->
                     <div class="bg-surface-container-low p-8 rounded-sm shadow-sm border border-stone-200/20 reveal delay-200">
@@ -466,8 +469,8 @@
                             <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
                             <span class="material-symbols-outlined star-icon" style="font-variation-settings: 'FILL' 1;">star</span>
                         </div>
-                        <p class="font-body text-on-surface-variant italic mb-6">"Profesionalism desăvârșit. Croiala este impecabilă, iar finisajele sunt perfecte. Simți că porți cu adevărat o piesă unică, creată special pentru tine."</p>
-                        <p class="font-headline text-on-surface font-semibold uppercase tracking-wider text-sm">- Maria S.</p>
+                        <p class="font-body text-on-surface-variant italic mb-6">"Acuma câtva timp am fost la Atelier pentru prietena mea cu un pantalon de mătase. Mi-a fost un pic teamă la început [...] În două zile am primit un telefon că lucrarea este gata. Și a fost perfectă, mulțumesc din suflet!"</p>
+                        <p class="font-headline text-on-surface font-semibold uppercase tracking-wider text-sm">- RYB B</p>
                     </div>
                 </div>
             </div>
@@ -600,7 +603,7 @@
                             Creativ</a>
                         <a href="#galerie"
                             class="font-body text-sm text-on-surface-variant hover:text-secondary transition-colors">Portofoliu
-                            Odys</a>
+                            Astaka</a>
                     </nav>
                 </div>
 
@@ -696,6 +699,89 @@
     <!-- Animation Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Advanced Hero Animations (Tilt, Magnet, Float) ---
+            gsap.registerPlugin(ScrollTrigger); // Păstrăm ScrollTrigger dacă e nevoie vreodată
+            
+            // 1. Staggered Entrance
+            gsap.from("#hero .hero-text-elem", {
+                y: 60,
+                opacity: 0,
+                duration: 1.5,
+                stagger: 0.15,
+                ease: "power4.out",
+                delay: 0.2
+            });
+
+            // 2. Floating Motion on H1
+            gsap.to("#hero h1", {
+                y: -12,
+                duration: 2.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: 1.5 // Începe după intro
+            });
+
+            // 3. 3D Tilt Effect on Video Background
+            const heroSection = document.getElementById("hero");
+            const heroBg = document.querySelector("#hero .absolute.inset-0.z-0");
+            
+            // Scale element slightly so edges don't show when tilted
+            gsap.set(heroBg, { scale: 1.07 }); 
+            gsap.set(heroSection, { perspective: 1000 });
+
+            heroSection.addEventListener("mousemove", (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+                gsap.to(heroBg, {
+                    x: -x * 40, // Deplasare laterală 40px
+                    y: -y * 40, 
+                    rotationY: x * 10, // Înclinare stânga-dreapta
+                    rotationX: -y * 10, // Înclinare sus-jos
+                    duration: 1.2,
+                    ease: "power2.out"
+                });
+            });
+
+            heroSection.addEventListener("mouseleave", () => {
+                gsap.to(heroBg, {
+                    x: 0,
+                    y: 0,
+                    rotationY: 0,
+                    rotationX: 0,
+                    duration: 1.5,
+                    ease: "power3.out"
+                });
+            });
+
+            // 4. Magnetic Buttons (Sticky cursor pull)
+            const magnets = document.querySelectorAll(".magnetic-btn, .group"); // Adăugat și pe logo-urile 'group'
+            magnets.forEach((mag) => {
+                mag.addEventListener("mousemove", (e) => {
+                    const rect = mag.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    
+                    gsap.to(mag, {
+                        x: x * 0.35, // Forța de atracție: 35%
+                        y: y * 0.35,
+                        duration: 0.4,
+                        ease: "power2.out"
+                    });
+                });
+                
+                mag.addEventListener("mouseleave", () => {
+                    gsap.to(mag, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "elastic.out(1, 0.3)"
+                    });
+                });
+            });
+            // -------------------------------------
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
